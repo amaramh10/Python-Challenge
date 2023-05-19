@@ -56,13 +56,40 @@ totalprofitloss = sum([netchanges])
 entireperiod = totalmonths - 1
 averageprofitloss = round(totalprofitloss/entireperiod, 2)
 
-#Calculate the min & max of profit losses
-maxchange = max([netchanges])
-minchange = min([netchanges])
+#Calculate the min & max of profit/losses
+maxchange = max(netchangelist)
+minchange = min(netchangelist)
+# print(minchange)
+# print(maxchange)
 
+#List the point of the highest & lowest values of profit/losses
+highestpoint = netchangelist.index(maxchange)
+lowestpoint = netchangelist.index(minchange)
 
-            
+#Show the best & worst months
+bestmonth = monthschange[highestpoint]
+worstmonth = monthschange[lowestpoint]
 
+#Print Analysis to Terminal
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months:  {totalmonths}")
+print(f"Total:  ${totalnet}")
+print(f"Average Change:  ${averageprofitloss}")
+print(f"Greatest Increase in Profits:  {bestmonth} (${maxchange})")
+print(f"Greatest Decrease in Losses:  {worstmonth} (${minchange})")
+
+#
+budgetdatafile = ("budget_analysis.txt")
+with open(budgetdatafile, "w") as output:
+
+    output.write("Financial Analysis")
+    output.write("----------------------------")
+    output.write(f"Total Months:  {totalmonths}")
+    output.write(f"Total:  ${totalnet}")
+    output.write(f"Average Change:  ${averageprofitloss}")
+    output.write(f"Greatest Increase in Profits:  {bestmonth} (${maxchange})")
+    output.write(f"Greatest Decrease in Losses:  {worstmonth} (${minchange})")
 
 
                
